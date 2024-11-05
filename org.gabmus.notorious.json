@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.notorious",
     "command": "notorious",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -13,6 +13,20 @@
     ],
     "modules": [
         {
+            "name": "gtksourceview-git",
+            "buildsystem": "meson",
+            "config-opts": [
+                "--buildtype=release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gtksourceview",
+                    "commit": "7fd3adb3134bbec167167bb6400e018e4f781eb9"
+                }
+            ]
+        },
+	{
             "name": "otf-source-code-pro",
             "buildsystem": "simple",
             "sources": [
