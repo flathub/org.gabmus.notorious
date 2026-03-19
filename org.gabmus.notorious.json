@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.notorious",
     "command": "notorious",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "49",
+    "runtime-version": "50",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -75,7 +75,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/notorious.git",
-                    "commit": "0.4"
+                    "tag": "0.4",
+                    "commit": "2483044588afa4ad1b1bd72d73ba49e1daf3f58f"
                 },
                 {
                     "type": "patch",
