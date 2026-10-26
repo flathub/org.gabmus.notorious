@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.notorious",
     "command": "notorious",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "50",
+    "runtime-version": "51",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -10,6 +10,12 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--filesystem=home:rw"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/gir-1.0",
+        "/share/vala"
     ],
     "modules": [
         {
@@ -46,6 +52,11 @@
         {
             "name": "gnome-builder-gtksourceview4-colorschemes",
             "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/share/gtksourceview-4/styles/",
+                "install builder.style-scheme.xml /app/share/gtksourceview-4/styles/",
+                "install builder-dark.style-scheme.xml /app/share/gtksourceview-4/styles/"
+            ],
             "sources": [
                 {
                     "type": "file",
@@ -57,11 +68,22 @@
                     "url": "https://gitlab.gnome.org/GNOME/gnome-builder/-/raw/d73cecfb8bf4b40df32d7f81607e5b24a3536bb4/data/style-schemes/builder.style-scheme.xml",
                     "sha256": "d10c9176746c86f8d605302f348f4cda71c0b0ffac323da565f73e638d3c351f"
                 }
+            ]
+        },
+        {
+            "name": "libhandy",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dglade_catalog=disabled"
             ],
-            "build-commands": [
-                "mkdir -p /app/share/gtksourceview-4/styles/",
-                "install builder.style-scheme.xml /app/share/gtksourceview-4/styles/",
-                "install builder-dark.style-scheme.xml /app/share/gtksourceview-4/styles/"
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.3.tar.xz",
+                    "sha256": "05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087"
+                }
             ]
         },
         {
